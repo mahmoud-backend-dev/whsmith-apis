@@ -1,0 +1,2399 @@
+openapi: 3.0.0
+info:
+  title: WhSmith
+  contact: {}
+  version: '1.0'
+servers:
+- url: https://avnology.org
+  variables: {}
+- url: http://localhost:1812
+  variables: {}
+paths:
+  /auth/signup:
+    post:
+      tags:
+      - Authentication
+      summary: Signup
+      operationId: Signup
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/SignupRequest'
+              - example:
+                  email: mahmoud.hamdi@avnology.com
+                  password: '123456789'
+                  confirmPassword: '123456789'
+                  firstName: mahmoud
+                  lastName: hamdi
+            example:
+              email: mahmoud.hamdi@avnology.com
+              password: '123456789'
+              confirmPassword: '123456789'
+              firstName: mahmoud
+              lastName: hamdi
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /auth/login:
+    post:
+      tags:
+      - Authentication
+      summary: Login
+      operationId: Login
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/LoginRequest'
+              - example:
+                  email: mahmoudhamdi157@gmail.com
+                  password: '123456'
+            example:
+              email: mahmoudhamdi157@gmail.com
+              password: '123456'
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /auth/verifySignup:
+    post:
+      tags:
+      - Authentication
+      summary: Verify For Signup
+      operationId: VerifyForSignup
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/VerifyForSignupRequest'
+              - example:
+                  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWRGb3JTaWdudXAiOjEsInVzZXJJZCI6IjY1MzdkOGZhNTYzYzI4NjliYzQ2NTRmNCIsImlhdCI6MTY5ODM3MTA4NiwiZXhwIjoxNjk4Mzc0Njg2fQ.RqglWDpaJ6C9uP8URnjCBhrvo8RzvBR6GZh6PZ-p89g
+            example:
+              token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWRGb3JTaWdudXAiOjEsInVzZXJJZCI6IjY1MzdkOGZhNTYzYzI4NjliYzQ2NTRmNCIsImlhdCI6MTY5ODM3MTA4NiwiZXhwIjoxNjk4Mzc0Njg2fQ.RqglWDpaJ6C9uP8URnjCBhrvo8RzvBR6GZh6PZ-p89g
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /auth/forgetPassword:
+    post:
+      tags:
+      - Authentication
+      summary: Forget Password
+      operationId: ForgetPassword
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/ForgetPasswordRequest'
+              - example:
+                  email: mh3908334@gmail.com
+            example:
+              email: mh3908334@gmail.com
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /auth/verifyPassword:
+    post:
+      tags:
+      - Authentication
+      summary: Verify Password
+      operationId: VerifyPassword
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/VerifyPasswordRequest'
+              - example:
+                  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTE5N2NkMTczYjBhNTk1YWQ5ZmFiYWIiLCJpYXQiOjE2OTYxNzA3MzEsImV4cCI6MTY5ODc2MjczMX0.T37VjcXf34Md_TTo3_C7Yc2eTsZk-eKR6KfDHqjeLn4
+            example:
+              token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTE5N2NkMTczYjBhNTk1YWQ5ZmFiYWIiLCJpYXQiOjE2OTYxNzA3MzEsImV4cCI6MTY5ODc2MjczMX0.T37VjcXf34Md_TTo3_C7Yc2eTsZk-eKR6KfDHqjeLn4
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /auth/resetPassword:
+    patch:
+      tags:
+      - Authentication
+      summary: Reset Password
+      operationId: ResetPassword
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/ResetPasswordRequest'
+              - example:
+                  email: mh3908334@gmail.com
+                  newPassword: '123456'
+            example:
+              email: mh3908334@gmail.com
+              newPassword: '123456'
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /auth/resendEmail:
+    post:
+      tags:
+      - Authentication
+      summary: Resend Verification Email
+      operationId: ResendVerificationEmail
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /auth/changeEmail:
+    post:
+      tags:
+      - Authentication
+      summary: Change Email
+      operationId: ChangeEmail
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/ChangeEmailRequest'
+              - example:
+                  email: mh3908334@gmail.com
+                  newEmail: ads@gmail.com
+            example:
+              email: mh3908334@gmail.com
+              newEmail: ads@gmail.com
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /store/add:
+    post:
+      tags:
+      - Store
+      summary: Add Store
+      operationId: AddStore
+      parameters: []
+      requestBody:
+        content:
+          multipart/form-data:
+            encoding: {}
+            schema:
+              required:
+              - name[ar]
+              - name[en]
+              - region[ar]
+              - region[en]
+              - city[ar]
+              - city[en]
+              - image
+              type: object
+              properties:
+                name[ar]:
+                  type: string
+                  example: يشيشس
+                name[en]:
+                  type: string
+                  example: sdsadas
+                region[ar]:
+                  type: string
+                  example: يشيشس
+                region[en]:
+                  type: string
+                  example: sdsadas
+                city[ar]:
+                  type: string
+                  example: يشيشس
+                city[en]:
+                  type: string
+                  example: dsada
+                image:
+                  type: string
+                  format: binary
+        required: false
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /store/all:
+    get:
+      tags:
+      - Store
+      summary: Get All Store
+      operationId: GetAllStore
+      parameters:
+      - name: limit
+        in: query
+        description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+          example: 5
+      - name: Accept-Language
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          example: ar
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+  /store/one/{id}:
+    get:
+      tags:
+      - Store
+      summary: Get Specific Store
+      operationId: GetSpecificStore
+      parameters:
+      - name: Accept-Language
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          example: ar
+      - name: id
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /store/remove/{id}:
+    delete:
+      tags:
+      - Store
+      summary: Archive Store
+      operationId: ArchiveStore
+      parameters:
+      - name: id
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /store/update/{id}:
+    patch:
+      tags:
+      - Store
+      summary: Update Store
+      operationId: UpdateStore
+      parameters:
+      - name: id
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            encoding: {}
+            schema:
+              required:
+              - name[ar]
+              - name[en]
+              - region[ar]
+              - region[en]
+              - city[ar]
+              - city[en]
+              - image
+              type: object
+              properties:
+                name[ar]:
+                  type: string
+                  example: يشيشس
+                name[en]:
+                  type: string
+                  example: sdsadas
+                region[ar]:
+                  type: string
+                  example: يشيشس
+                region[en]:
+                  type: string
+                  example: sdsadas
+                city[ar]:
+                  type: string
+                  example: يشيشس
+                city[en]:
+                  type: string
+                  example: dsada
+                image:
+                  type: string
+                  format: binary
+        required: false
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /category/add:
+    post:
+      tags:
+      - Category
+      summary: Add Category
+      operationId: AddCategory
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/AddCategoryRequest'
+              - example:
+                  name:
+                    ar: سته
+                    en: Sex
+            example:
+              name:
+                ar: سته
+                en: Sex
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /category/all:
+    get:
+      tags:
+      - Category
+      summary: Get All Category
+      operationId: GetAllCategory
+      parameters:
+      - name: limit
+        in: query
+        description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+          example: 10
+      - name: category
+        in: query
+        description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: ست
+      - name: Accept-Language
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          example: ar
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+  /category/one/{id}:
+    get:
+      tags:
+      - Category
+      summary: Get Specific Category
+      operationId: GetSpecificCategory
+      parameters:
+      - name: Accept-Language
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          example: ar
+      - name: id
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /category/remove/{id}:
+    delete:
+      tags:
+      - Category
+      summary: Archive Category
+      operationId: ArchiveCategory
+      parameters:
+      - name: id
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /category/update/{id}:
+    patch:
+      tags:
+      - Category
+      summary: Update Category
+      operationId: UpdateCategory
+      parameters:
+      - name: id
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/UpdateCategoryRequest'
+              - example:
+                  name:
+                    ar: سبعه
+                    en: Seven
+            example:
+              name:
+                ar: سبعه
+                en: Seven
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /product/add:
+    post:
+      tags:
+      - Product
+      summary: Add Product
+      operationId: AddProduct
+      parameters: []
+      requestBody:
+        content:
+          multipart/form-data:
+            encoding: {}
+            schema:
+              required:
+              - name[ar]
+              - name[en]
+              - description[ar]
+              - description[en]
+              - quantity
+              - stores[0][store]
+              - stores[0][price]
+              - stores[1][store]
+              - stores[1][price]
+              - images
+              - category
+              type: object
+              properties:
+                name[ar]:
+                  type: string
+                  example: 'تست '
+                name[en]:
+                  type: string
+                  example: 'Test '
+                description[ar]:
+                  type: string
+                  example: تسسيسشيسش سيشسيسشيسشيسشيسشيشسيسشيسشيسش
+                description[en]:
+                  type: string
+                  example: Madddasasda566999ada  asdasdasd5as scadsadas adasdafds
+                quantity:
+                  type: integer
+                  format: int32
+                  example: 20
+                stores[0][store]:
+                  type: string
+                  example: 65353008153db4d278762536
+                stores[0][price]:
+                  type: integer
+                  format: int32
+                  example: 3000
+                stores[1][store]:
+                  type: string
+                  example: 652579906f0b66edd6aa3c87
+                stores[1][price]:
+                  type: integer
+                  format: int32
+                  example: 500
+                images:
+                  type: string
+                  format: binary
+                category:
+                  type: string
+                  example: 653504bbb4c91d4b7cd78469
+        required: false
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /product/all/{id}:
+    get:
+      tags:
+      - Product
+      summary: Get All Products
+      operationId: GetAllProducts
+      parameters:
+      - name: Accept-Language
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          example: ar
+      - name: id
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /product/one/{id}:
+    get:
+      tags:
+      - Product
+      summary: Get Specific Product
+      operationId: GetSpecificProduct
+      parameters:
+      - name: id
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /product/remove/{id}:
+    delete:
+      tags:
+      - Product
+      summary: Archive Product
+      operationId: ArchiveProduct
+      parameters:
+      - name: id
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /product/update/{id}:
+    patch:
+      tags:
+      - Product
+      summary: Update Product
+      operationId: UpdateProduct
+      parameters:
+      - name: id
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            encoding: {}
+            schema:
+              required:
+              - images
+              - stores[0][store]
+              - stores[0][price]
+              type: object
+              properties:
+                images:
+                  type: string
+                  format: binary
+                stores[0][store]:
+                  type: string
+                  example: 652579906f0b66edd6aa3c87
+                stores[0][price]:
+                  type: integer
+                  format: int32
+                  example: 900
+        required: false
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /product/all/dashboard:
+    get:
+      tags:
+      - Product
+      summary: Get All Product Dashbord
+      operationId: GetAllProductDashbord
+      parameters:
+      - name: Accept-Language
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          example: ar
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /cart/add:
+    post:
+      tags:
+      - Cart
+      summary: Add Cart
+      operationId: AddCart
+      parameters:
+      - name: Accept-Language
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          example: ar
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/AddCartRequest'
+              - example:
+                  productId: 6535378e7d9acda13ae04da3
+                  quantity: 1
+                  store: 652579906f0b66edd6aa3c87
+            example:
+              productId: 6535378e7d9acda13ae04da3
+              quantity: 1
+              store: 652579906f0b66edd6aa3c87
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /cart/all:
+    get:
+      tags:
+      - Cart
+      summary: Get All Carts
+      operationId: GetAllCarts
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /cart/remove/{itemID}:
+    delete:
+      tags:
+      - Cart
+      summary: Remove Cart
+      operationId: RemoveCart
+      parameters:
+      - name: itemID
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /cart/update/{itemID}:
+    patch:
+      tags:
+      - Cart
+      summary: Update Cart Item Quantity
+      operationId: UpdateCartItemQuantity
+      parameters:
+      - name: itemID
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/UpdateCartItemQuantityRequest'
+              - example:
+                  quantity: 40
+            example:
+              quantity: 40
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /order/add/{cartID}:
+    post:
+      tags:
+      - Order
+      summary: Add Order
+      operationId: AddOrder
+      parameters:
+      - name: cartID
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /order/all:
+    get:
+      tags:
+      - Order
+      summary: Get All Orders User
+      operationId: GetAllOrdersUser
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /order/dashboard/update/{id}:
+    patch:
+      tags:
+      - Order
+      summary: Update Status Order
+      operationId: UpdateStatusOrder
+      parameters:
+      - name: id
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/UpdateStatusOrderRequest'
+              - example:
+                  status: Delivered
+            example:
+              status: Delivered
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /order/dashboard/all:
+    get:
+      tags:
+      - Order
+      summary: Get All Orders Dashboard
+      operationId: GetAllOrdersDashboard
+      parameters:
+      - name: store
+        in: query
+        description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /order/dashboard/{id}:
+    get:
+      tags:
+      - Order
+      summary: Get Specific Order
+      operationId: GetSpecificOrder
+      parameters:
+      - name: id
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /order/dashboard/remove/{id}:
+    delete:
+      tags:
+      - Order
+      summary: Remove Order Dashboard
+      operationId: RemoveOrderDashboard
+      parameters:
+      - name: id
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /homePage/add/sectionOne:
+    post:
+      tags:
+      - Home Page
+      summary: Add Section One
+      operationId: AddSectionOne
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/AddSectionOneRequest'
+              - example:
+                  label:
+                    ar: تست
+                    eg: Test
+                  products:
+                  - 651ad8956186a4885f9e8107
+                  - 651c0a137999ac4a9bc33161
+            example:
+              label:
+                ar: تست
+                eg: Test
+              products:
+              - 651ad8956186a4885f9e8107
+              - 651c0a137999ac4a9bc33161
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /homePage/sectionOne:
+    get:
+      tags:
+      - Home Page
+      summary: Get Section One
+      operationId: GetSectionOne
+      parameters:
+      - name: Accept-Language
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          example: ar
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /homePage/add/sectionTwo:
+    post:
+      tags:
+      - Home Page
+      summary: Add Section Two
+      operationId: AddSectionTwo
+      parameters: []
+      requestBody:
+        content:
+          multipart/form-data:
+            encoding: {}
+            schema:
+              required:
+              - label
+              - description
+              - images
+              type: object
+              properties:
+                label:
+                  type: string
+                  example: Test
+                description:
+                  type: string
+                  example: Test Test Test Test Test Test Test Test
+                images:
+                  type: string
+                  format: binary
+        required: false
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /homePage/sectionTwo/edit/image:
+    patch:
+      tags:
+      - Home Page
+      summary: Update Section Two
+      operationId: UpdateSectionTwo
+      parameters: []
+      requestBody:
+        content:
+          multipart/form-data:
+            encoding: {}
+            schema:
+              required:
+              - nameImg
+              - image
+              type: object
+              properties:
+                nameImg:
+                  type: string
+                  example: http://localhost:1812/sectionTwo/sectionTwo-a320c801-a070-4281-9b89-11b1bfbc231f-1698241138910.png
+                image:
+                  type: string
+                  format: binary
+        required: false
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /homePage/sectionTwo/delete/image:
+    patch:
+      tags:
+      - Home Page
+      summary: Delete Image From Section 2
+      operationId: DeleteImageFromSection2
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/DeleteImageFromSection2Request'
+              - example:
+                  nameImg: http://localhost:1812/sectionTwo/sectionTwo-8c6ad3ab-8f0b-4693-99c7-3f2ab8341b4b-1698240849696.png
+            example:
+              nameImg: http://localhost:1812/sectionTwo/sectionTwo-8c6ad3ab-8f0b-4693-99c7-3f2ab8341b4b-1698240849696.png
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /homePage/sectionTwo:
+    get:
+      tags:
+      - Home Page
+      summary: Get Section Two
+      operationId: GetSectionTwo
+      parameters:
+      - name: Accept-Language
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          example: ar
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /homePage/add/sectionThree:
+    post:
+      tags:
+      - Home Page
+      summary: Add Section Three
+      operationId: AddSectionThree
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/AddSectionThreeRequest'
+              - example:
+                  label: Test 2
+                  description: Test Test Test Test Test Test Test Test
+                  products:
+                  - 651ad8956186a4885f9e8107
+                  - 651c0a137999ac4a9bc33161
+            example:
+              label: Test 2
+              description: Test Test Test Test Test Test Test Test
+              products:
+              - 651ad8956186a4885f9e8107
+              - 651c0a137999ac4a9bc33161
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /homePage/sectionThree:
+    get:
+      tags:
+      - Home Page
+      summary: Get Section Three
+      operationId: GetSectionThree
+      parameters:
+      - name: Accept-Language
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          example: ar
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /homePage/add/sectionFour:
+    post:
+      tags:
+      - Home Page
+      summary: Add Section Four
+      operationId: AddSectionFour
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/AddSectionFourRequest'
+              - example:
+                  label: Test 2
+                  categories:
+                  - 651ad1d9ad415735c88c1105
+                  - 651ea7a8296c778aa34c5bb8
+            example:
+              label: Test 2
+              categories:
+              - 651ad1d9ad415735c88c1105
+              - 651ea7a8296c778aa34c5bb8
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /homePage/sectionFour:
+    get:
+      tags:
+      - Home Page
+      summary: Get Section Four
+      operationId: GetSectionFour
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /homePage/add/sectionFive:
+    post:
+      tags:
+      - Home Page
+      summary: Add Section Five
+      operationId: AddSectionFive
+      parameters: []
+      requestBody:
+        content:
+          multipart/form-data:
+            encoding: {}
+            schema:
+              required:
+              - label[ar]
+              - label[en]
+              - images
+              type: object
+              properties:
+                label[ar]:
+                  type: string
+                  example: تسس
+                label[en]:
+                  type: string
+                  example: 'Test '
+                images:
+                  type: string
+                  format: binary
+        required: false
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /homePage/sectionFive/update:
+    patch:
+      tags:
+      - Home Page
+      summary: Update Section Five
+      operationId: UpdateSectionFive
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/UpdateSectionFiveRequest'
+              - example:
+                  label:
+                    ar: تست
+                    en: Test
+            example:
+              label:
+                ar: تست
+                en: Test
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /homePage/sectionFive/add/image:
+    post:
+      tags:
+      - Home Page
+      summary: Add Image Section Five
+      operationId: AddImageSectionFive
+      parameters: []
+      requestBody:
+        content:
+          multipart/form-data:
+            encoding: {}
+            schema:
+              required:
+              - image
+              type: object
+              properties:
+                image:
+                  type: string
+                  format: binary
+        required: false
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /homePage/sectionFive/remove/image:
+    patch:
+      tags:
+      - Home Page
+      summary: Delete Image Section Five
+      operationId: DeleteImageSectionFive
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/DeleteImageSectionFiveRequest'
+              - example:
+                  nameImg: http://localhost:1812/brands/brands-572ad9bf-5ce9-43fa-8c42-e2777a059704-1698245858143.png
+            example:
+              nameImg: http://localhost:1812/brands/brands-572ad9bf-5ce9-43fa-8c42-e2777a059704-1698245858143.png
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /homePage/sectionFive:
+    get:
+      tags:
+      - Home Page
+      summary: Get Section Five
+      operationId: GetSectionFive
+      parameters:
+      - name: Accept-Language
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          example: ar
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /homePage/all:
+    get:
+      tags:
+      - Home Page
+      summary: Get All Sections
+      operationId: GetAllSections
+      parameters:
+      - name: Accept-Language
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          example: ar
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /homePage/add/mainSection:
+    get:
+      tags:
+      - Home Page
+      summary: Add Main Section
+      operationId: AddMainSection
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /homePage/update/mainSection:
+    patch:
+      tags:
+      - Home Page
+      summary: Update Main Section
+      operationId: UpdateMainSection
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /homePage/mainSection:
+    get:
+      tags:
+      - Home Page
+      summary: Get Main Section
+      operationId: GetMainSection
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /user/address/remove/651c48e436a4ae20265187d6:
+    delete:
+      tags:
+      - User
+      summary: Remove Addresss
+      operationId: RemoveAddresss
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /user/address/all:
+    get:
+      tags:
+      - User
+      summary: Get All Addresses
+      operationId: GetAllAddresses
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /user/changePassword:
+    patch:
+      tags:
+      - User
+      summary: Change Password
+      operationId: ChangePassword
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/ChangePasswordRequest'
+              - example:
+                  currentPassword: '123456'
+                  newPassword: owner@123456
+                  confirmPassword: owner@123456
+            example:
+              currentPassword: '123456'
+              newPassword: owner@123456
+              confirmPassword: owner@123456
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /user/address/add:
+    post:
+      tags:
+      - User
+      summary: Add Address
+      operationId: AddAddress
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/AddAddressRequest'
+              - example:
+                  address: asdsasasa
+            example:
+              address: asdsasasa
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /user/all:
+    get:
+      tags:
+      - User
+      summary: Get All User
+      operationId: GetAllUser
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /user/delete/{id}:
+    delete:
+      tags:
+      - User
+      summary: Delete User
+      operationId: DeleteUser
+      parameters:
+      - name: id
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /user/add/role/{id}:
+    post:
+      tags:
+      - User
+      summary: Add User Role
+      operationId: AddUserRole
+      parameters:
+      - name: id
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/AddUserRoleRequest'
+              - example:
+                  role: Manger All Users
+                  permissions:
+                  - manage user
+                  - manage product
+            example:
+              role: Manger All Users
+              permissions:
+              - manage user
+              - manage product
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /user/remove/role:
+    patch:
+      tags:
+      - User
+      summary: Delete User Role
+      operationId: DeleteUserRole
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/DeleteUserRoleRequest'
+              - example:
+                  user: 6527fb55bf3aff582440fcae
+            example:
+              user: 6527fb55bf3aff582440fcae
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /user/add/ban/{id}:
+    post:
+      tags:
+      - User
+      summary: Add Ban With Time
+      operationId: AddBanWithTime
+      parameters:
+      - name: id
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/AddBanWithTimeRequest'
+              - example:
+                  data: 2020-07-03
+            example:
+              data: 2020-07-03
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /user/remove/ban/{id}:
+    delete:
+      tags:
+      - User
+      summary: Remove Ban
+      operationId: RemoveBan
+      parameters:
+      - name: id
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /user/add/ban/forever/{id}:
+    post:
+      tags:
+      - User
+      summary: Add Ban Forever
+      operationId: AddBanForever
+      parameters:
+      - name: id
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/AddBanForeverRequest'
+              - example:
+                  data: 2020-07-03
+            example:
+              data: 2020-07-03
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /user/all/admin:
+    get:
+      tags:
+      - User
+      summary: Get All Admins
+      operationId: GetAllAdmins
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /:
+    get:
+      tags:
+      - User
+      summary: Get Me
+      operationId: GetMe
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /role/add:
+    post:
+      tags:
+      - Roles
+      summary: Add Role
+      operationId: AddRole
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/AddRoleRequest'
+              - example:
+                  name: 'Manger '
+                  permissions:
+                  - manage order
+                  - manage category
+            example:
+              name: 'Manger '
+              permissions:
+              - manage order
+              - manage category
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /role/remove/{id}:
+    delete:
+      tags:
+      - Roles
+      summary: remove role
+      operationId: removerole
+      parameters:
+      - name: id
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /role/update/{id}:
+    patch:
+      tags:
+      - Roles
+      summary: Update Role
+      operationId: UpdateRole
+      parameters:
+      - name: id
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/UpdateRoleRequest'
+              - example:
+                  role: manage user
+            example:
+              role: manage user
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /role/add/admin/{id}:
+    post:
+      tags:
+      - Roles
+      summary: Add Role admin
+      operationId: AddRoleadmin
+      parameters:
+      - name: id
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /role/remove/admin/{id}:
+    delete:
+      tags:
+      - Roles
+      summary: Remove Role Admin
+      operationId: RemoveRoleAdmin
+      parameters:
+      - name: id
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /role/add/owner/{id}:
+    post:
+      tags:
+      - Roles
+      summary: Add Role Owner
+      operationId: AddRoleOwner
+      parameters:
+      - name: id
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /role/remove/owner/{id}:
+    delete:
+      tags:
+      - Roles
+      summary: Remove Role Owner
+      operationId: RemoveRoleOwner
+      parameters:
+      - name: id
+        in: path
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /role/all:
+    get:
+      tags:
+      - Roles
+      summary: Get All Roles
+      operationId: GetAllRoles
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+components:
+  schemas:
+    SignupRequest:
+      title: SignupRequest
+      required:
+      - email
+      - password
+      - confirmPassword
+      - firstName
+      - lastName
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+        confirmPassword:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+      example:
+        email: mahmoud.hamdi@avnology.com
+        password: '123456789'
+        confirmPassword: '123456789'
+        firstName: mahmoud
+        lastName: hamdi
+    LoginRequest:
+      title: LoginRequest
+      required:
+      - email
+      - password
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+      example:
+        email: mahmoudhamdi157@gmail.com
+        password: '123456'
+    VerifyForSignupRequest:
+      title: VerifyForSignupRequest
+      required:
+      - token
+      type: object
+      properties:
+        token:
+          type: string
+      example:
+        token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWRGb3JTaWdudXAiOjEsInVzZXJJZCI6IjY1MzdkOGZhNTYzYzI4NjliYzQ2NTRmNCIsImlhdCI6MTY5ODM3MTA4NiwiZXhwIjoxNjk4Mzc0Njg2fQ.RqglWDpaJ6C9uP8URnjCBhrvo8RzvBR6GZh6PZ-p89g
+    ForgetPasswordRequest:
+      title: ForgetPasswordRequest
+      required:
+      - email
+      type: object
+      properties:
+        email:
+          type: string
+      example:
+        email: mh3908334@gmail.com
+    VerifyPasswordRequest:
+      title: VerifyPasswordRequest
+      required:
+      - token
+      type: object
+      properties:
+        token:
+          type: string
+      example:
+        token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTE5N2NkMTczYjBhNTk1YWQ5ZmFiYWIiLCJpYXQiOjE2OTYxNzA3MzEsImV4cCI6MTY5ODc2MjczMX0.T37VjcXf34Md_TTo3_C7Yc2eTsZk-eKR6KfDHqjeLn4
+    ResetPasswordRequest:
+      title: ResetPasswordRequest
+      required:
+      - email
+      - newPassword
+      type: object
+      properties:
+        email:
+          type: string
+        newPassword:
+          type: string
+      example:
+        email: mh3908334@gmail.com
+        newPassword: '123456'
+    ChangeEmailRequest:
+      title: ChangeEmailRequest
+      required:
+      - email
+      - newEmail
+      type: object
+      properties:
+        email:
+          type: string
+        newEmail:
+          type: string
+      example:
+        email: mh3908334@gmail.com
+        newEmail: ads@gmail.com
+    AddCategoryRequest:
+      title: AddCategoryRequest
+      required:
+      - name
+      type: object
+      properties:
+        name:
+          allOf:
+          - $ref: '#/components/schemas/Name'
+          - {}
+      example:
+        name:
+          ar: سته
+          en: Sex
+    Name:
+      title: Name
+      required:
+      - ar
+      - en
+      type: object
+      properties:
+        ar:
+          type: string
+        en:
+          type: string
+      example:
+        ar: سته
+        en: Sex
+    UpdateCategoryRequest:
+      title: UpdateCategoryRequest
+      required:
+      - name
+      type: object
+      properties:
+        name:
+          allOf:
+          - $ref: '#/components/schemas/Name'
+          - {}
+      example:
+        name:
+          ar: سبعه
+          en: Seven
+    AddCartRequest:
+      title: AddCartRequest
+      required:
+      - productId
+      - quantity
+      - store
+      type: object
+      properties:
+        productId:
+          type: string
+        quantity:
+          type: integer
+          format: int32
+        store:
+          type: string
+      example:
+        productId: 6535378e7d9acda13ae04da3
+        quantity: 1
+        store: 652579906f0b66edd6aa3c87
+    UpdateCartItemQuantityRequest:
+      title: UpdateCartItemQuantityRequest
+      required:
+      - quantity
+      type: object
+      properties:
+        quantity:
+          type: integer
+          format: int32
+      example:
+        quantity: 40
+    UpdateStatusOrderRequest:
+      title: UpdateStatusOrderRequest
+      required:
+      - status
+      type: object
+      properties:
+        status:
+          type: string
+      example:
+        status: Delivered
+    AddSectionOneRequest:
+      title: AddSectionOneRequest
+      required:
+      - label
+      - products
+      type: object
+      properties:
+        label:
+          allOf:
+          - $ref: '#/components/schemas/Label'
+          - {}
+        products:
+          type: array
+          items:
+            type: string
+          description: ''
+      example:
+        label:
+          ar: تست
+          eg: Test
+        products:
+        - 651ad8956186a4885f9e8107
+        - 651c0a137999ac4a9bc33161
+    Label:
+      title: Label
+      required:
+      - ar
+      - eg
+      type: object
+      properties:
+        ar:
+          type: string
+        eg:
+          type: string
+      example:
+        ar: تست
+        eg: Test
+    DeleteImageFromSection2Request:
+      title: DeleteImageFromSection2Request
+      required:
+      - nameImg
+      type: object
+      properties:
+        nameImg:
+          type: string
+      example:
+        nameImg: http://localhost:1812/sectionTwo/sectionTwo-8c6ad3ab-8f0b-4693-99c7-3f2ab8341b4b-1698240849696.png
+    AddSectionThreeRequest:
+      title: AddSectionThreeRequest
+      required:
+      - label
+      - description
+      - products
+      type: object
+      properties:
+        label:
+          type: string
+        description:
+          type: string
+        products:
+          type: array
+          items:
+            type: string
+          description: ''
+      example:
+        label: Test 2
+        description: Test Test Test Test Test Test Test Test
+        products:
+        - 651ad8956186a4885f9e8107
+        - 651c0a137999ac4a9bc33161
+    AddSectionFourRequest:
+      title: AddSectionFourRequest
+      required:
+      - label
+      - categories
+      type: object
+      properties:
+        label:
+          type: string
+        categories:
+          type: array
+          items:
+            type: string
+          description: ''
+      example:
+        label: Test 2
+        categories:
+        - 651ad1d9ad415735c88c1105
+        - 651ea7a8296c778aa34c5bb8
+    UpdateSectionFiveRequest:
+      title: UpdateSectionFiveRequest
+      required:
+      - label
+      type: object
+      properties:
+        label:
+          allOf:
+          - $ref: '#/components/schemas/Label1'
+          - {}
+      example:
+        label:
+          ar: تست
+          en: Test
+    Label1:
+      title: Label1
+      required:
+      - ar
+      - en
+      type: object
+      properties:
+        ar:
+          type: string
+        en:
+          type: string
+      example:
+        ar: تست
+        en: Test
+    DeleteImageSectionFiveRequest:
+      title: DeleteImageSectionFiveRequest
+      required:
+      - nameImg
+      type: object
+      properties:
+        nameImg:
+          type: string
+      example:
+        nameImg: http://localhost:1812/brands/brands-572ad9bf-5ce9-43fa-8c42-e2777a059704-1698245858143.png
+    RemoveAddresssRequest:
+      title: RemoveAddresssRequest
+      required:
+      - address
+      type: object
+      properties:
+        address:
+          type: string
+      example:
+        address: 15 Test 7/ Test
+    ChangePasswordRequest:
+      title: ChangePasswordRequest
+      required:
+      - currentPassword
+      - newPassword
+      - confirmPassword
+      type: object
+      properties:
+        currentPassword:
+          type: string
+        newPassword:
+          type: string
+        confirmPassword:
+          type: string
+      example:
+        currentPassword: '123456'
+        newPassword: owner@123456
+        confirmPassword: owner@123456
+    AddAddressRequest:
+      title: AddAddressRequest
+      required:
+      - address
+      type: object
+      properties:
+        address:
+          type: string
+      example:
+        address: asdsasasa
+    DeleteUserRequest:
+      title: DeleteUserRequest
+      required:
+      - address
+      type: object
+      properties:
+        address:
+          type: string
+      example:
+        address: 15 Test 7/ Test
+    AddUserRoleRequest:
+      title: AddUserRoleRequest
+      required:
+      - role
+      - permissions
+      type: object
+      properties:
+        role:
+          type: string
+        permissions:
+          type: array
+          items:
+            type: string
+          description: ''
+      example:
+        role: Manger All Users
+        permissions:
+        - manage user
+        - manage product
+    DeleteUserRoleRequest:
+      title: DeleteUserRoleRequest
+      required:
+      - user
+      type: object
+      properties:
+        user:
+          type: string
+      example:
+        user: 6527fb55bf3aff582440fcae
+    AddBanWithTimeRequest:
+      title: AddBanWithTimeRequest
+      required:
+      - data
+      type: object
+      properties:
+        data:
+          type: string
+      example:
+        data: 2020-07-03
+    AddBanForeverRequest:
+      title: AddBanForeverRequest
+      required:
+      - data
+      type: object
+      properties:
+        data:
+          type: string
+      example:
+        data: 2020-07-03
+    AddRoleRequest:
+      title: AddRoleRequest
+      required:
+      - name
+      - permissions
+      type: object
+      properties:
+        name:
+          type: string
+        permissions:
+          type: array
+          items:
+            type: string
+          description: ''
+      example:
+        name: 'Manger '
+        permissions:
+        - manage order
+        - manage category
+    UpdateRoleRequest:
+      title: UpdateRoleRequest
+      required:
+      - role
+      type: object
+      properties:
+        role:
+          type: string
+      example:
+        role: manage user
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+security: []
+tags:
+- name: Authentication
+- name: Store
+- name: Category
+- name: Product
+- name: Cart
+- name: Order
+- name: Home Page
+- name: User
+- name: Roles

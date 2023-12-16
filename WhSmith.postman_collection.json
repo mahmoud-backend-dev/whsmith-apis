@@ -1,0 +1,3050 @@
+{
+	"info": {
+		"_postman_id": "387a175e-5f7a-42ae-9c7a-481abd8494c3",
+		"name": "WhSmith",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23942854"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"mahmoud.hamdi@avnology.com\",\r\n    \"password\":\"123456789\",\r\n    \"confirmPassword\":\"123456789\",\r\n    \"firstName\":\"mahmoud\",\r\n    \"lastName\":\"hamdi\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/auth/signup",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"JWT\", pm.response.json().token);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"mahmoudhamdi157@gmail.com\",\r\n    \"password\":\"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/auth/login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify For Signup",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"JWT\", pm.response.json().token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWRGb3JTaWdudXAiOjEsInVzZXJJZCI6IjY1MzdkOGZhNTYzYzI4NjliYzQ2NTRmNCIsImlhdCI6MTY5ODM3MTA4NiwiZXhwIjoxNjk4Mzc0Njg2fQ.RqglWDpaJ6C9uP8URnjCBhrvo8RzvBR6GZh6PZ-p89g\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/auth/verifySignup",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"verifySignup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Forget Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"mh3908334@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/auth/forgetPassword",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"forgetPassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTE5N2NkMTczYjBhNTk1YWQ5ZmFiYWIiLCJpYXQiOjE2OTYxNzA3MzEsImV4cCI6MTY5ODc2MjczMX0.T37VjcXf34Md_TTo3_C7Yc2eTsZk-eKR6KfDHqjeLn4\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/auth/verifyPassword",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"verifyPassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"JWT\", pm.response.json().token);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"mh3908334@gmail.com\",\r\n    \"newPassword\" : \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/auth/resetPassword",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"resetPassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Resend Verification Email",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/auth/resendEmail",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"resendEmail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Email",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"mh3908334@gmail.com\",\r\n    \"newEmail\":\"ads@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/auth/changeEmail",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"changeEmail"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Store",
+			"item": [
+				{
+					"name": "Add Store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name[ar]",
+									"value": "يشيشس",
+									"type": "text"
+								},
+								{
+									"key": "name[en]",
+									"value": "sdsadas",
+									"type": "text"
+								},
+								{
+									"key": "region[ar]",
+									"value": "يشيشس",
+									"type": "text"
+								},
+								{
+									"key": "region[en]",
+									"value": "sdsadas",
+									"type": "text"
+								},
+								{
+									"key": "city[ar]",
+									"value": "يشيشس",
+									"type": "text"
+								},
+								{
+									"key": "city[en]",
+									"value": "dsada",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/MTM/OneDrive/Pictures/Screenshots/SectionTech3.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/store/add",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"store",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Store",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "ar",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/store/all?limit=5",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"store",
+								"all"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "store",
+									"value": "Te",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Specific Store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "ar",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/store/one/651ab07176612a2e37aab008",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"store",
+								"one",
+								"651ab07176612a2e37aab008"
+							],
+							"query": [
+								{
+									"key": "store",
+									"value": "Te",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Archive Store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/store/remove/651ab07176612a2e37aab008",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"store",
+								"remove",
+								"651ab07176612a2e37aab008"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name[ar]",
+									"value": "يشيشس",
+									"type": "text"
+								},
+								{
+									"key": "name[en]",
+									"value": "sdsadas",
+									"type": "text"
+								},
+								{
+									"key": "region[ar]",
+									"value": "يشيشس",
+									"type": "text"
+								},
+								{
+									"key": "region[en]",
+									"value": "sdsadas",
+									"type": "text"
+								},
+								{
+									"key": "city[ar]",
+									"value": "يشيشس",
+									"type": "text"
+								},
+								{
+									"key": "city[en]",
+									"value": "dsada",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/MTM/OneDrive/Pictures/Screenshots/Screenshot 2023-03-22 224835.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/store/update/653e5e918b8d001417f0b3ee",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"store",
+								"update",
+								"653e5e918b8d001417f0b3ee"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "Add Category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":{\r\n        \"ar\":\"سته\",\r\n        \"en\":\"Sex\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/category/add",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"category",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Category",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "ar",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/category/all?limit=10&category=ست",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"category",
+								"all"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "category",
+									"value": "ست"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Specific Category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "ar",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/category/one/653504bbb4c91d4b7cd78469",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"category",
+								"one",
+								"653504bbb4c91d4b7cd78469"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Archive Category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/category/remove/651ad1d9ad415735c88c1105",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"category",
+								"remove",
+								"651ad1d9ad415735c88c1105"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{    \r\n    \"name\":{\r\n        \"ar\":\"سبعه\",\r\n        \"en\":\"Seven\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/category/update/653504bbb4c91d4b7cd78469",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"category",
+								"update",
+								"653504bbb4c91d4b7cd78469"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Add Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name[ar]",
+									"value": "تست ",
+									"type": "text"
+								},
+								{
+									"key": "name[en]",
+									"value": "Test ",
+									"type": "text"
+								},
+								{
+									"key": "description[ar]",
+									"value": "تسسيسشيسش سيشسيسشيسشيسشيسشيشسيسشيسشيسش",
+									"type": "text"
+								},
+								{
+									"key": "description[en]",
+									"value": "Madddasasda566999ada  asdasdasd5as scadsadas adasdafds",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "20",
+									"type": "text"
+								},
+								{
+									"key": "stores[0][store]",
+									"value": "65353008153db4d278762536",
+									"type": "text"
+								},
+								{
+									"key": "stores[0][price]",
+									"value": "3000",
+									"type": "text"
+								},
+								{
+									"key": "stores[1][store]",
+									"value": "652579906f0b66edd6aa3c87",
+									"type": "text"
+								},
+								{
+									"key": "stores[1][price]",
+									"value": "500",
+									"type": "text"
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": "/C:/Users/MTM/OneDrive/Pictures/Screenshots/err2.png"
+								},
+								{
+									"key": "category",
+									"value": "653504bbb4c91d4b7cd78469",
+									"type": "text"
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": "/C:/Users/MTM/OneDrive/Pictures/Screenshots/err3.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/product/add",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"product",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Products",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "ar",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{URL}}/product/all/65353008153db4d278762536",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"product",
+								"all",
+								"65353008153db4d278762536"
+							],
+							"query": [
+								{
+									"key": "minPrice",
+									"value": "3000",
+									"disabled": true
+								},
+								{
+									"key": "maxPrice",
+									"value": "6000",
+									"disabled": true
+								},
+								{
+									"key": "product",
+									"value": "Ma",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "D",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Specific Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/product/one/65396ab3b7c81778acfe9b83",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"product",
+								"one",
+								"65396ab3b7c81778acfe9b83"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Archive Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/product/remove/6538ff3025968af2ea402be6",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"product",
+								"remove",
+								"6538ff3025968af2ea402be6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "images",
+									"type": "file",
+									"src": "/C:/Users/MTM/OneDrive/Pictures/Screenshots/one.png"
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": "/C:/Users/MTM/OneDrive/Pictures/Screenshots/Screenshot 2023-03-22 224835.png"
+								},
+								{
+									"key": "stores[0][store]",
+									"value": "652579906f0b66edd6aa3c87",
+									"type": "text"
+								},
+								{
+									"key": "stores[0][price]",
+									"value": "900",
+									"type": "text"
+								},
+								{
+									"key": "name[ar]",
+									"value": "نسيش",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/product/update/652580d8f18818e14acd88f1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"product",
+								"update",
+								"652580d8f18818e14acd88f1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Product Dashbord",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "ar",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/product/all/dashboard",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"product",
+								"all",
+								"dashboard"
+							],
+							"query": [
+								{
+									"key": "store",
+									"value": "Test 3",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "Te",
+									"disabled": true
+								},
+								{
+									"key": "minPrice",
+									"value": "1000",
+									"disabled": true
+								},
+								{
+									"key": "maxPrice",
+									"value": "3000",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cart",
+			"item": [
+				{
+					"name": "Add Cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "ar",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productId\":\"6535378e7d9acda13ae04da3\",\r\n    \"quantity\":1,\r\n    \"store\":\"652579906f0b66edd6aa3c87\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/cart/add",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"cart",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Carts",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/cart/all",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"cart",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/cart/remove/651ad8956186a4885f9e8107",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"cart",
+								"remove",
+								"651ad8956186a4885f9e8107"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Cart Item Quantity",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"quantity\":40\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/cart/update/6539109ebade784955bdb143",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"cart",
+								"update",
+								"6539109ebade784955bdb143"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "Add Order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "javascript"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/order/add/653d1fd7badd8ae4cf7d160f",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"order",
+								"add",
+								"653d1fd7badd8ae4cf7d160f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Orders User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/order/all",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"order",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Status Order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\":\"Canceled\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/order/dashboard/update/653d37fcabdaf3aeaf8cece6",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"order",
+								"dashboard",
+								"update",
+								"653d37fcabdaf3aeaf8cece6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Orders Dashboard",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/order/dashboard/all",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"order",
+								"dashboard",
+								"all"
+							],
+							"query": [
+								{
+									"key": "user",
+									"value": "5",
+									"disabled": true
+								},
+								{
+									"key": "store",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "Ma",
+									"disabled": true
+								},
+								{
+									"key": "product",
+									"value": "h",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Specific Order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/order/dashboard/652bb5de7191b5b4c01e49fc",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"order",
+								"dashboard",
+								"652bb5de7191b5b4c01e49fc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Order Dashboard",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/order/dashboard/remove/651ad8956186a4885f9e8107",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"order",
+								"dashboard",
+								"remove",
+								"651ad8956186a4885f9e8107"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete All Delivered And Canceled",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/order/dashboard/remove/all/delivered-canceled",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"order",
+								"dashboard",
+								"remove",
+								"all",
+								"delivered-canceled"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Delivered And Canceled",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/order/dashboard/get/all/delivered-canceled",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"order",
+								"dashboard",
+								"get",
+								"all",
+								"delivered-canceled"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Home Page",
+			"item": [
+				{
+					"name": "Add Section One",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"label\":{\r\n        \"ar\":\"تست\",\r\n        \"eg\":\"Test\"\r\n    },\r\n    \"products\":[\"651ad8956186a4885f9e8107\",\"651c0a137999ac4a9bc33161\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/homePage/add/sectionOne",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"homePage",
+								"add",
+								"sectionOne"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Section One",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "ar",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/homePage/sectionOne",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"homePage",
+								"sectionOne"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Section Two",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "label",
+									"value": "Test",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Test Test Test Test Test Test Test Test",
+									"type": "text"
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": "/C:/Users/MTM/OneDrive/Pictures/Screenshots/aboutCourse.png"
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": "/C:/Users/MTM/OneDrive/Pictures/Screenshots/four.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/homePage/add/sectionTwo",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"homePage",
+								"add",
+								"sectionTwo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Section Two",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nameImg",
+									"value": "http://localhost:1812/sectionTwo/sectionTwo-a320c801-a070-4281-9b89-11b1bfbc231f-1698241138910.png",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/MTM/OneDrive/Pictures/Screenshots/Screenshot 2023-03-22 224835.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/homePage/sectionTwo/edit/image",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"homePage",
+								"sectionTwo",
+								"edit",
+								"image"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Image Section Two",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nameImg",
+									"value": "http://localhost:1812/sectionTwo/sectionTwo-a320c801-a070-4281-9b89-11b1bfbc231f-1698241138910.png",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/MTM/OneDrive/Pictures/Screenshots/Screenshot 2023-03-22 224835.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/homePage/sectionTwo/edit/image",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"homePage",
+								"sectionTwo",
+								"edit",
+								"image"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Image From Section 2",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nameImg\":\"http://localhost:1812/sectionTwo/sectionTwo-8c6ad3ab-8f0b-4693-99c7-3f2ab8341b4b-1698240849696.png\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/homePage/sectionTwo/delete/image",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"homePage",
+								"sectionTwo",
+								"delete",
+								"image"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Section Two",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "ar",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/homePage/sectionTwo",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"homePage",
+								"sectionTwo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Section Three",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"label\":\"Test 2\",\r\n    \"description\":\"Test Test Test Test Test Test Test Test\",\r\n    \"products\":[\"651ad8956186a4885f9e8107\",\"651c0a137999ac4a9bc33161\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/homePage/add/sectionThree",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"homePage",
+								"add",
+								"sectionThree"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Section Three",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "ar",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/homePage/sectionThree",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"homePage",
+								"sectionThree"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Section Four",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"label\":\"Test 2\",\r\n    \"categories\":[\"651ad1d9ad415735c88c1105\",\"651ea7a8296c778aa34c5bb8\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/homePage/add/sectionFour",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"homePage",
+								"add",
+								"sectionFour"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Section Four",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/homePage/sectionFour",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"homePage",
+								"sectionFour"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Section Five",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "label[ar]",
+									"value": "تسس",
+									"type": "text"
+								},
+								{
+									"key": "label[en]",
+									"value": "Test ",
+									"type": "text"
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": "/C:/Users/MTM/OneDrive/Pictures/Screenshots/SectionTech.png"
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": "/C:/Users/MTM/OneDrive/Pictures/Screenshots/SectionTech3.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/homePage/add/sectionFive",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"homePage",
+								"add",
+								"sectionFive"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Section Five",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"label\": {\r\n        \"ar\": \"تست\",\r\n        \"en\": \"Test\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/homePage/sectionFive/update",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"homePage",
+								"sectionFive",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Image Section Five",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/MTM/OneDrive/Pictures/Screenshots/err.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/homePage/sectionFive/add/image",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"homePage",
+								"sectionFive",
+								"add",
+								"image"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Image Section Five",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nameImg\":\"http://localhost:1812/brands/brands-572ad9bf-5ce9-43fa-8c42-e2777a059704-1698245858143.png\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/homePage/sectionFive/remove/image",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"homePage",
+								"sectionFive",
+								"remove",
+								"image"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Section Five",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "ar",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/homePage/sectionFive",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"homePage",
+								"sectionFive"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Sections",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "ar",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/homePage/all",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"homePage",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Main Section",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/homePage/add/mainSection",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"homePage",
+								"add",
+								"mainSection"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Main Section",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{URL}}/homePage/update/mainSection",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"homePage",
+								"update",
+								"mainSection"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Main Section",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/homePage/mainSection",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"homePage",
+								"mainSection"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Remove Addresss",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"address\":\"15 Test 7/ Test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/user/address/remove/651c48e436a4ae20265187d6",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user",
+								"address",
+								"remove",
+								"651c48e436a4ae20265187d6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Addresses",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"address\":\"15 Test 7/ Test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/user/address/all",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user",
+								"address",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"currentPassword\":\"123456\",\r\n    \"newPassword\" : \"owner@123456\",\r\n    \"confirmPassword\":\"owner@123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/user/changePassword",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user",
+								"changePassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Address",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"address\":\"asdsasasa\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/user/address/add",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user",
+								"address",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/user/all",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"address\":\"15 Test 7/ Test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/user/delete/65226da87c47d20f926c7f21",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user",
+								"delete",
+								"65226da87c47d20f926c7f21"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add User Role",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"role\":\"Manger All Users\",\r\n    \"permissions\":[\"manage user\",\"manage product\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/user/add/role/6522c9b998c04399384bd3dc",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user",
+								"add",
+								"role",
+								"6522c9b998c04399384bd3dc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User Role",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\":\"6527fb55bf3aff582440fcae\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/user/remove/role",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user",
+								"remove",
+								"role"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Ban With Time",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\":\"2020-07-03\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/user/add/ban/652bedb4641021fdbf2cf3b1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user",
+								"add",
+								"ban",
+								"652bedb4641021fdbf2cf3b1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Ban",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/user/remove/ban/652bedb4641021fdbf2cf3b1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user",
+								"remove",
+								"ban",
+								"652bedb4641021fdbf2cf3b1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Ban Forever",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\":\"2020-07-03\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/user/add/ban/forever/652bedb4641021fdbf2cf3b1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user",
+								"add",
+								"ban",
+								"forever",
+								"652bedb4641021fdbf2cf3b1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Admins",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/user/all/admin",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user",
+								"all",
+								"admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Me",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Roles",
+			"item": [
+				{
+					"name": "Add Role",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Manger \",\r\n    \"permissions\":[\"manage order\",\"manage category\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/role/add",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"role",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove role",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/role/remove/6527b9fa564268a4df51d901",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"role",
+								"remove",
+								"6527b9fa564268a4df51d901"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Role",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"role\":\"manage user\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/role/update/6522c9b998c04399384bd3dc",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"role",
+								"update",
+								"6522c9b998c04399384bd3dc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Role admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/role/add/admin/6527cd5ca801335f197a1fdd",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"role",
+								"add",
+								"admin",
+								"6527cd5ca801335f197a1fdd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Role Admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/role/remove/admin/6527cd5ca801335f197a1fdd",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"role",
+								"remove",
+								"admin",
+								"6527cd5ca801335f197a1fdd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Role Owner",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/role/add/owner/6527cd5ca801335f197a1fdd",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"role",
+								"add",
+								"owner",
+								"6527cd5ca801335f197a1fdd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Role Owner",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/role/remove/owner/6527cd5ca801335f197a1fdd",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"role",
+								"remove",
+								"owner",
+								"6527cd5ca801335f197a1fdd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Roles",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/role/all",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"role",
+								"all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
