@@ -203,3 +203,49 @@ export const getAllProductWithSearch = asyncHandler(async (req, res) => {
     allProduct,
   });
 });
+
+
+export const updateImageBase = async (req, res, next) => {
+  const allProducts = await Product.find({});
+  await Promise.all(allProducts.map(async (product) => {
+    if (product.images.length > 0) {
+      product.images = product.images.map((img) => {
+        return img.replace('https://avnology.org', "https://whsmithksa.com");
+      })
+    }
+    await product.save();
+  }))
+  const homePage = await HomePage.findOne({});
+  homePage.mainSection.image = homePage.mainSection.image.replace('https://avnology.org', "https://whsmithksa.com");
+  homePage.sectionTwo.images = homePage.sectionTwo.images.map((img) => {
+    return img.replace('https://avnology.org', "https://whsmithksa.com");
+  });
+  homePage.sectionFive.images = homePage.sectionFive.images.map((img) => {
+    return img.replace('https://avnology.org', "https://whsmithksa.com");
+  });
+  await homePage.save();
+
+  const AllOrders = await Order.find({});
+  await Promise.all(AllOrders.map(async (order) => {
+    order.cartItems.forEach((item) => {
+      if (item.images.length > 0) {
+        item.images = item.images.map((img) => {
+          return img.replace('https://avnology.org', "https://whsmithksa.com");
+        });
+      }
+    })
+    await order.save();
+  }));
+
+  const allStores = await Store.find({});
+  await Promise.all(allStores.map(async (store) => {
+    if (store.image) {
+      store.image = store.image.replace('https://avnology.org', "https://whsmithksa.com");
+    }
+    await store.save();
+  }));
+  res.status(StatusCodes.OK).json({
+    status: "Success",
+    massage: "Done"
+  });
+}
